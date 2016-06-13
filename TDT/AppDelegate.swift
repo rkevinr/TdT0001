@@ -3,7 +3,7 @@
 //  TDT
 //
 //  Created by Kevin on 6/13/16.
-//  Copyright © 2016 Kevin Ryan. All rights reserved.
+//  Copyright © 2016 R. Kevin Ryan. All rights reserved.
 //
 
 import UIKit
