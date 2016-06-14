@@ -14,6 +14,11 @@ class TDTTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+//        var a1 = TDTActivity(description:  "random activity",
+//                             valueCategory: ValueCategory.Ne,
+//                             startTime: "Tue Jun 14 12:19:37 CDT 2016",
+//                             durationMinutes: 15)
+//        print(a1.valueCategory.rawValue)
     }
     
     override func tearDown() {
@@ -21,10 +26,24 @@ class TDTTests: XCTestCase {
         super.tearDown()
     }
     
+    func testAddActivity() {
+        var a1 = TDTActivity(description:  "random activity",
+                             valueCategory: ValueCategory.Ne,
+                             startTime: "Tue Jun 14 12:19:37 CDT 2016",
+                             durationMinutes: 15)
+        print("**** TDTActivity struct:\n     \(a1)\n************")
+        XCTAssert(a1.durationMinutes == 15)
+        XCTAssert(a1.valueCategory.rawValue == "Ne")
+    }
+    
+    
+    /*
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssert(M_PI == M_PI)
     }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
@@ -32,5 +51,6 @@ class TDTTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    */
     
 }

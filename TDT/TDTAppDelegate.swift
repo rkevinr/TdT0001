@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  TDTAppDelegate.swift
 //  TDT
 //
 //  Created by Kevin on 6/13/16.
@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class TDTAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 

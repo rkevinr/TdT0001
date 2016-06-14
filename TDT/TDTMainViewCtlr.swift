@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TDTMainViewCtlr.swift
 //  TDT
 //
 //  Created by Kevin on 6/13/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TDTMainViewCtlr: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
