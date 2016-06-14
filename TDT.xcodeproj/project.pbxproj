@@ -13,6 +13,7 @@
 		144717851D0F1F20005B63EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144717841D0F1F20005B63EF /* Assets.xcassets */; };
 		144717881D0F1F20005B63EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144717861D0F1F20005B63EF /* LaunchScreen.storyboard */; };
 		144717931D0F1F20005B63EF /* TDTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144717921D0F1F20005B63EF /* TDTTests.swift */; };
+		144717A21D0F555F005B63EF /* TDTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144717A11D0F555F005B63EF /* TDTActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		1447178E1D0F1F20005B63EF /* TDTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		144717921D0F1F20005B63EF /* TDTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TDTTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		144717941D0F1F20005B63EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		144717A11D0F555F005B63EF /* TDTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTActivity.swift; path = _model/TDTActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		1447179D1D0F3EB3005B63EF /* model */ = {
 			isa = PBXGroup;
 			children = (
+				144717A11D0F555F005B63EF /* TDTActivity.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144717A21D0F555F005B63EF /* TDTActivity.swift in Sources */,
 				144717801D0F1F20005B63EF /* ViewController.swift in Sources */,
 				1447177E1D0F1F20005B63EF /* AppDelegate.swift in Sources */,
 			);
