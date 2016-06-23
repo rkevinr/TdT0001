@@ -15,11 +15,86 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-cO-2vj">
+                                <rect key="frame" x="259" y="201" width="82" height="30"/>
+                                <state key="normal" title="Edit Activity"/>
+                                <connections>
+                                    <segue destination="4TF-gu-6eN" kind="presentation" id="UZk-n2-wBQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gdE-cO-2vj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="181" id="LZM-pb-wEk"/>
+                            <constraint firstItem="gdE-cO-2vj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tBi-Mv-Yq1"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Edit Activity View Ctlr-->
+        <scene sceneID="8eV-DN-J5q">
+            <objects>
+                <viewController id="4TF-gu-6eN" customClass="TDTEditActivityViewCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SFG-gs-Tef"/>
+                        <viewControllerLayoutGuide type="bottom" id="slK-nH-n8g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2JW-Ze-ISV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2OM-3e-wIo">
+                                <rect key="frame" x="194" y="94" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add/Edit Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K56-zc-pZD">
+                                <rect key="frame" x="236" y="34" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="9U3-ZH-dXK">
+                                <rect key="frame" x="175" y="138" width="236" height="29"/>
+                                <segments>
+                                    <segment title="B"/>
+                                    <segment title="Ne"/>
+                                    <segment title="NB"/>
+                                    <segment title="SL"/>
+                                    <segment title="SL(net)"/>
+                                </segments>
+                            </segmentedControl>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="ZLr-UO-WYM">
+                                <rect key="frame" x="234" y="217" width="118" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Duration (mins.)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-1x-A6a">
+                                <rect key="frame" x="210" y="188" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u91-5S-CGX">
+                                <rect key="frame" x="223" y="255" width="142" height="30"/>
+                                <state key="normal" title="Change Start Time..."/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9U3-ZH-dXK" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="5x2-p8-3br"/>
+                            <constraint firstItem="Po8-1x-A6a" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="Jua-Gb-T14"/>
+                            <constraint firstItem="ZLr-UO-WYM" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="NPu-Nf-2YE"/>
+                            <constraint firstItem="K56-zc-pZD" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="ZN8-Sj-G70"/>
+                            <constraint firstItem="u91-5S-CGX" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="q4h-tM-z8p"/>
+                            <constraint firstItem="2OM-3e-wIo" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="qWs-Ws-psY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FC-ye-o8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="181"/>
         </scene>
     </scenes>
 </document>

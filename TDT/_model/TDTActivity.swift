@@ -15,12 +15,24 @@ enum ValueCategory: String {
     case SL = "SL"
 }
 
+let defaultValueCategory = ValueCategory.Ne
+
 struct TDTActivity {
     let description: String
     let valueCategory:  ValueCategory
-    let startTime: String // NSDate representation as String?
     let durationMinutes: Int
-    
+    let startTime: NSDate // NSDate representation as String?
+ 
+    init(_ description: String = "[empty]",
+            valueCategory: ValueCategory = defaultValueCategory,
+            durationMins: Int = 15,
+            startTime: NSDate = NSDate(timeIntervalSinceNow: 0) ) {
+        
+        self.description = description
+        self.valueCategory = valueCategory
+        self.durationMinutes = durationMins
+        self.startTime = startTime
+    }
 }
 
 /*

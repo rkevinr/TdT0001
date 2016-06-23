@@ -26,12 +26,16 @@ class TDTTests: XCTestCase {
         super.tearDown()
     }
     
+    
+    // MARK: TDTActivity tests
+    
     func testAddActivity() {
-        var a1 = TDTActivity(description:  "random activity",
-                             valueCategory: ValueCategory.Ne,
-                             startTime: "Tue Jun 14 12:19:37 CDT 2016",
-                             durationMinutes: 15)
-        print("**** TDTActivity struct:\n     \(a1)\n************")
+        var a1 = TDTActivity("random activity",
+                                valueCategory: ValueCategory.Ne,
+                                durationMins: 15
+                            )
+                            // startTime: NSDate("Tue Jun 14 12:19:37 CDT 2016"),
+        print("******\nTDTActivity struct: ******\n    \(a1)\n************")
         XCTAssert(a1.durationMinutes == 15)
         XCTAssert(a1.valueCategory.rawValue == "Ne")
     }
