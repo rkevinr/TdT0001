@@ -12,7 +12,7 @@ class TDTEditActivityViewCtlr: UIViewController
                     /* , UITextFieldDelegate */ {
 
     
-    // @IBOutlet weak var activityTextFld: UITextField!    // FIXME: curr'ly extraneous
+    @IBOutlet weak var activityTextFld: UITextField!
     @IBOutlet weak var durationMinsTextFld: UITextField!
     @IBOutlet weak var durEditingToolbar: UIToolbar!
 
@@ -20,8 +20,10 @@ class TDTEditActivityViewCtlr: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // activityTextFld.autocorrectionType = .No  // set via IB, instead
+        activityTextFld.becomeFirstResponder()
         durationMinsTextFld.inputAccessoryView = durEditingToolbar
-        // durationMinsTextFld.sizeToFit()
+        
     }
 
     override func didReceiveMemoryWarning() {
