@@ -15,15 +15,44 @@ class TDTEditActivityViewCtlr: UIViewController
     @IBOutlet weak var activityTextFld: UITextField!
     @IBOutlet weak var durationMinsTextFld: UITextField!
     @IBOutlet weak var durEditingToolbar: UIToolbar!
+    
+    let DEV_HEIGHT_iPh4S: CGFloat = 480.0
+    let LHS_INSET_RGLR_HORIZ_SZ_CLS: CGFloat = 80.0
 
+    func checkScreenHeight() {
+        let scrn = UIScreen.mainScreen()
+        if scrn.traitCollection.verticalSizeClass == .Regular &&
+                scrn.bounds.height > DEV_HEIGHT_iPh4S {
+            activityTextFld.autocorrectionType = .Yes
+        } else {
+            activityTextFld.autocorrectionType = .No
+        }
+        
+        if scrn.traitCollection.horizontalSizeClass == .Regular {
+            activityTextFld.bounds =
+                CGRect(
+                    origin: CGPoint(
+                        x: scrn.bounds.origin.x + LHS_INSET_RGLR_HORIZ_SZ_CLS,
+                        y: activityTextFld.bounds.origin.y
+                    ),
+                    size: CGSize(
+                        width: scrn.bounds.width - LHS_INSET_RGLR_HORIZ_SZ_CLS,
+                        height: activityTextFld.bounds.height
+                    )
+                )
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        // activityTextFld.autocorrectionType = .No  // set via IB, instead
+        checkScreenHeight()
         activityTextFld.becomeFirstResponder()
         durationMinsTextFld.inputAccessoryView = durEditingToolbar
-        
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize,
+                        withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        checkScreenHeight()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,11 +74,5 @@ class TDTEditActivityViewCtlr: UIViewController
     @IBAction func textEntryDone(textField: UITextField) {
         print("input:  \(textField.text!)")
     }
-    
-    /*  NOT USED
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        return true
-    }
-    */
     
 }

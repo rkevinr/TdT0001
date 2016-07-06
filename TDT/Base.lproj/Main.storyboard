@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-cO-2vj">
-                                <rect key="frame" x="67" y="486" width="82" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-cO-2vj">
+                                <rect key="frame" x="70" y="520" width="82" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Edit Activity"/>
                                 <connections>
@@ -48,67 +48,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgV-4R-NYb">
-                                <rect key="frame" x="251" y="88" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgV-4R-NYb">
+                                <rect key="frame" x="40" y="77" width="520" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <action selector="textEntryDone:" destination="4TF-gu-6eN" eventType="editingDidEndOnExit" id="HvL-Fx-TZi"/>
                                 </connections>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="9U3-ZH-dXK">
-                                <rect key="frame" x="212" y="138" width="175" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="9U3-ZH-dXK" userLabel="TimeValueCategRadioBtns">
+                                <rect key="frame" x="249" y="127" width="101" height="29"/>
                                 <segments>
                                     <segment title="B"/>
                                     <segment title="Ne"/>
                                     <segment title="NB"/>
                                 </segments>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u91-5S-CGX">
-                                <rect key="frame" x="235" y="239" width="142" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u91-5S-CGX">
+                                <rect key="frame" x="229" y="216" width="142" height="30"/>
                                 <state key="normal" title="Change Start Time..."/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add/Edit Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K56-zc-pZD">
-                                <rect key="frame" x="236" y="46" width="127" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add/Edit Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K56-zc-pZD">
+                                <rect key="frame" x="246" y="40" width="108" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N6Y-3M-k1o">
-                                <rect key="frame" x="208" y="190" width="269" height="29"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="N6Y-3M-k1o" userLabel="DurationMinsStackView">
+                                <rect key="frame" x="252" y="171" width="269" height="29"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Duration (mins): " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="70" translatesAutoresizingMaskIntoConstraints="NO" id="q4C-mu-yHD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Duration (mins): " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="70" translatesAutoresizingMaskIntoConstraints="NO" id="q4C-mu-yHD">
                                         <rect key="frame" x="0.0" y="0.0" width="127" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="left" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="  15" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVG-Fd-xLe">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="left" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="  15" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVG-Fd-xLe">
                                         <rect key="frame" x="127" y="0.0" width="48" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <stepper opaque="NO" contentMode="right" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ray-fw-za2">
+                                    <stepper opaque="NO" contentMode="right" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ray-fw-za2">
                                         <rect key="frame" x="175" y="0.0" width="94" height="29"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                     </stepper>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ray-fw-za2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mVG-Fd-xLe" secondAttribute="trailing" constant="50" id="cSa-5Q-KSI"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vgV-4R-NYb" firstAttribute="top" secondItem="K56-zc-pZD" secondAttribute="bottom" constant="20" id="2Za-p4-fCg"/>
                             <constraint firstItem="K56-zc-pZD" firstAttribute="top" secondItem="SFG-gs-Tef" secondAttribute="bottom" constant="20" id="5Ox-Ma-rb3"/>
-                            <constraint firstItem="u91-5S-CGX" firstAttribute="top" relation="lessThanOrEqual" secondItem="N6Y-3M-k1o" secondAttribute="bottom" constant="16" id="Jad-KT-fme"/>
+                            <constraint firstItem="vgV-4R-NYb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="2JW-Ze-ISV" secondAttribute="leadingMargin" constant="20" id="9NI-y0-Tfb"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="vgV-4R-NYb" secondAttribute="trailing" constant="20" id="Hqv-At-JjR"/>
                             <constraint firstItem="u91-5S-CGX" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="O7h-rN-GTa"/>
+                            <constraint firstItem="9U3-ZH-dXK" firstAttribute="top" secondItem="vgV-4R-NYb" secondAttribute="bottom" constant="20" id="T5z-hk-mj5"/>
                             <constraint firstItem="9U3-ZH-dXK" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="Zk0-eD-H8O"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9U3-ZH-dXK" secondAttribute="trailing" constant="80" id="bfq-Qd-xkk"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="9U3-ZH-dXK" secondAttribute="trailing" constant="80" id="bfq-Qd-xkk"/>
+                            <constraint firstItem="u91-5S-CGX" firstAttribute="top" secondItem="9U3-ZH-dXK" secondAttribute="bottom" constant="61" id="cDP-T6-vKv"/>
                             <constraint firstItem="K56-zc-pZD" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="fAV-oM-ho1"/>
-                            <constraint firstItem="N6Y-3M-k1o" firstAttribute="top" relation="lessThanOrEqual" secondItem="9U3-ZH-dXK" secondAttribute="bottom" constant="16" id="fL0-TL-FjF"/>
-                            <constraint firstItem="9U3-ZH-dXK" firstAttribute="leading" secondItem="2JW-Ze-ISV" secondAttribute="leadingMargin" constant="80" id="nHk-nF-fG3"/>
-                            <constraint firstItem="N6Y-3M-k1o" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="zpT-cc-4BD"/>
+                            <constraint firstItem="N6Y-3M-k1o" firstAttribute="top" secondItem="9U3-ZH-dXK" secondAttribute="bottom" constant="16" id="gg9-h1-4Ij"/>
+                            <constraint firstItem="9U3-ZH-dXK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2JW-Ze-ISV" secondAttribute="leadingMargin" constant="80" id="nHk-nF-fG3"/>
+                            <constraint firstItem="vgV-4R-NYb" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="ubh-58-nbj"/>
+                            <constraint firstItem="N6Y-3M-k1o" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="zD0-1I-KkG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -128,7 +131,7 @@
                     </items>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="1438" y="161"/>
+            <point key="canvasLocation" x="1336" y="299"/>
         </scene>
     </scenes>
 </document>
