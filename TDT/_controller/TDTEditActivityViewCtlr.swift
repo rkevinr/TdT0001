@@ -13,6 +13,7 @@ class TDTEditActivityViewCtlr: UIViewController
 
     
     @IBOutlet weak var activityTextFld: UITextField!
+    @IBOutlet weak var durationStackVw: UIStackView!
     @IBOutlet weak var durationMinsTextFld: UITextField!
     @IBOutlet weak var durEditingToolbar: UIToolbar!
     
