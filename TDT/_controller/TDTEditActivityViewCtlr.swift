@@ -44,9 +44,21 @@ class TDTEditActivityViewCtlr: UIViewController
         }
     }
     
+    func addMenuItemToTextField() {
+        // FIXME:  add stuff for copying selection to known words/phrases list
+        print("\(self).\(#function) called")
+        guard let items = UIMenuController.sharedMenuController().menuItems else {
+            return
+        }
+        items.forEach {
+            print("    item: \($0)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkScreenHeight()
+        addMenuItemToTextField()
         activityTextFld.becomeFirstResponder()
         durationMinsTextFld.inputAccessoryView = durEditingToolbar
     }
@@ -71,9 +83,15 @@ class TDTEditActivityViewCtlr: UIViewController
     }
     */
     
-    // MARK: activity text field methods
-    @IBAction func textEntryDone(textField: UITextField) {
-        print("input:  \(textField.text!)")
+    @IBAction func textEntryDone(sender: UITextField) {
+        let tf = sender
+        print("input:  \(tf.text!)")
+        
+        // FIXME: even w/o sel, both "lets" succeed?  need better logic here
+        guard let r = tf.selectedTextRange else {return }
+        guard let substr = tf.textInRange(r) else {return }
+        print("    selected:  [\(substr)]")
+        
     }
     
 }

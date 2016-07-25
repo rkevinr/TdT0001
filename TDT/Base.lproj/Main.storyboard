@@ -25,10 +25,22 @@
                                     <segue destination="4TF-gu-6eN" kind="presentation" id="UZk-n2-wBQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkO-bz-482">
+                                <rect key="frame" x="473" y="520" width="57" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0h4-tj-jOw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gdE-cO-2vj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="33c-Od-03O"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TkO-bz-482" secondAttribute="bottom" constant="50" id="U8O-Dd-A3G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TkO-bz-482" secondAttribute="trailing" constant="50" id="wcd-K1-UP0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gdE-cO-2vj" secondAttribute="bottom" constant="50" id="yRM-tg-Vjb"/>
                         </constraints>
                     </view>
@@ -54,7 +66,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
-                                    <action selector="textEntryDone:" destination="4TF-gu-6eN" eventType="editingDidEndOnExit" id="HvL-Fx-TZi"/>
+                                    <action selector="textEntryDone:" destination="4TF-gu-6eN" eventType="editingDidEndOnExit" id="OA5-PN-vVZ"/>
                                 </connections>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="9U3-ZH-dXK" userLabel="TimeValueCategRadioBtns">
@@ -115,7 +127,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityTextFld" destination="vgV-4R-NYb" id="qHT-fP-Yrh"/>
+                        <outlet property="activityTextFld" destination="vgV-4R-NYb" id="gwa-8W-Ynk"/>
                         <outlet property="durEditingToolbar" destination="Ah6-Hk-qkj" id="qdb-v8-AHS"/>
                         <outlet property="durationMinsTextFld" destination="mVG-Fd-xLe" id="Iim-lL-2bj"/>
                     </connections>

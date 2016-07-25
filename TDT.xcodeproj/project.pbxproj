@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1407FD131D44CCD000F1A3D2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1407FD121D44CCD000F1A3D2 /* Settings.bundle */; };
 		1447177E1D0F1F20005B63EF /* TDTAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1447177D1D0F1F20005B63EF /* TDTAppDelegate.swift */; };
 		144717801D0F1F20005B63EF /* TDTMainViewCtlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1447177F1D0F1F20005B63EF /* TDTMainViewCtlr.swift */; };
 		144717831D0F1F20005B63EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144717811D0F1F20005B63EF /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1407FD121D44CCD000F1A3D2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1447177A1D0F1F20005B63EF /* TDT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1447177D1D0F1F20005B63EF /* TDTAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TDTAppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1447177F1D0F1F20005B63EF /* TDTMainViewCtlr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TDTMainViewCtlr.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -133,6 +135,7 @@
 			children = (
 				144717841D0F1F20005B63EF /* Assets.xcassets */,
 				144717891D0F1F20005B63EF /* Info.plist */,
+				1407FD121D44CCD000F1A3D2 /* Settings.bundle */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1407FD131D44CCD000F1A3D2 /* Settings.bundle in Resources */,
 				144717881D0F1F20005B63EF /* LaunchScreen.storyboard in Resources */,
 				144717851D0F1F20005B63EF /* Assets.xcassets in Resources */,
 				144717831D0F1F20005B63EF /* Main.storyboard in Resources */,

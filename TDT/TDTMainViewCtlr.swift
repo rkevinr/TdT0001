@@ -9,6 +9,24 @@
 import UIKit
 
 class TDTMainViewCtlr: UIViewController {
+    
+    @IBAction func updateSettings(sender: UIButton) {
+        // FIXME:  this is crummy code; here just as a starting point
+        let settingsRead =
+            UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)
+        
+        /*
+        let appDefaults = [String:AnyObject]()
+        NSUserDefaults.standardUserDefaults().registerDefaults(appDefaults)
+        */
+        
+        let d = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
+        for k in d.keys {
+            if k.hasSuffix("_preference") {
+                print("(key, value) = (\(k), \(d[k]))")
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
