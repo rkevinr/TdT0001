@@ -46,7 +46,7 @@ class TDTEditActivityViewCtlr: UIViewController
     
     func addMenuItemToTextField() {
         // FIXME:  add stuff for copying selection to known words/phrases list
-        print("\(self).\(#function) called")
+        print("\(self.dynamicType).\(#function) called")
         guard let items = UIMenuController.sharedMenuController().menuItems else {
             return
         }
