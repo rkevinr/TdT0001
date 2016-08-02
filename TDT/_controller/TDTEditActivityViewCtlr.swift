@@ -83,10 +83,17 @@ class TDTEditActivityViewCtlr: UIViewController
     }
     */
     
+    func validateFields() -> Bool {
+        
+        return true
+    }
+    
     @IBAction func textEntryDone(sender: UITextField) {
         let tf = sender
         print("input:  \(tf.text!)")
-        
+        // 'commit' the activity when text field's dismissed (use defaults
+        //    or curr. settings for all other fields, unless in 'new user' mode)
+        // FIXME: in 'new user' mode, PROMPT to set/verify categ/duration, etc.
         // FIXME: even w/o sel, both "lets" succeed?  need better logic here
         guard let r = tf.selectedTextRange else {return }
         guard let substr = tf.textInRange(r) else {return }

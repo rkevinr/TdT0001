@@ -12,6 +12,7 @@ class TDTMainViewCtlr: UIViewController {
     
     @IBAction func updateSettings(sender: UIButton) {
         // FIXME:  this is crummy code; here just as a starting point
+        // FIXME:  add a setting for 'new' user to be prompted for categ/duration
         let settingsRead =
             UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)
         
