@@ -9,7 +9,8 @@
 import UIKit
 
 class TDTEditActivityViewCtlr: UIViewController
-                    /* , UITextFieldDelegate */ {
+                    /* , UITextFieldDelegate */
+                    , UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var activityTextFld: UITextField!
     @IBOutlet weak var durationStackVw: UIStackView!
@@ -152,5 +153,36 @@ class TDTEditActivityViewCtlr: UIViewController
         print("dur'n. inc/decr'd to:  \(durationChanger.value)")
         durationMinsTextFld.text = String(durationChanger.value)
     }
+    
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ChangeStartTimeSegue" {
+            let dest = segue.destinationViewController
+            if let pop = dest.popoverPresentationController {
+                pop.delegate = self
+                // FIXME:  consider adding delay macro, and passthroughViews
+                print("segue-ing to change start time...")
+            }
+        }
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(
+        popoverPresentationController: UIPopoverPresentationController) {
+        print("...popover dismissed")
+        updateStartTime()
+    }
+    
+    
+    func updateStartTime() {
+        print("updateStartTime() called... need to change start time...")
+        
+        /*  FIXME: TODO: popover would be more-lightweight way to present this?
+        if let pop = self.popoverPresentationController {
+            // ... other configurations go here ... 
+            pop.delegate = self as! UIPopoverPresentationController
+        }
+        */
+    }
+    
     
 }

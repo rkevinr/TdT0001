@@ -83,6 +83,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u91-5S-CGX">
                                 <rect key="frame" x="229" y="216" width="142" height="30"/>
                                 <state key="normal" title="Change Start Time..."/>
+                                <connections>
+                                    <segue destination="4VD-fm-snW" kind="popoverPresentation" identifier="ChangeStartTimeSegue" popoverAnchorView="u91-5S-CGX" id="t9q-GC-vQ4">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add/Edit Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K56-zc-pZD">
                                 <rect key="frame" x="246" y="40" width="108" height="17"/>
@@ -152,6 +157,38 @@
                 </toolbar>
             </objects>
             <point key="canvasLocation" x="1106" y="200"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="71W-Ve-oNh">
+            <objects>
+                <viewController id="4VD-fm-snW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b6G-3Y-vCf"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Q4-p2-hVj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NqN-uI-jln">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fkx-ds-MUZ">
+                                <rect key="frame" x="0.0" y="7" width="600" height="593"/>
+                                <date key="date" timeIntervalSinceReferenceDate="491948207.94423401">
+                                    <!--2016-08-03 20:16:47 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2Q4-p2-hVj" firstAttribute="top" secondItem="Fkx-ds-MUZ" secondAttribute="bottom" id="2sy-xT-8cH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fkx-ds-MUZ" secondAttribute="trailing" constant="-20" id="EFG-x7-3tZ"/>
+                            <constraint firstItem="Fkx-ds-MUZ" firstAttribute="leading" secondItem="NqN-uI-jln" secondAttribute="leadingMargin" constant="-20" id="KrQ-qN-i6e"/>
+                            <constraint firstItem="Fkx-ds-MUZ" firstAttribute="top" secondItem="NqN-uI-jln" secondAttribute="topMargin" constant="20" id="n8w-q8-vEu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H8b-5R-0TS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="200"/>
         </scene>
     </scenes>
 </document>
