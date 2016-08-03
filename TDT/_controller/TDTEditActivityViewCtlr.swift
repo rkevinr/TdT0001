@@ -10,20 +10,28 @@ import UIKit
 
 class TDTEditActivityViewCtlr: UIViewController
                     /* , UITextFieldDelegate */ {
-
     
     @IBOutlet weak var activityTextFld: UITextField!
     @IBOutlet weak var durationStackVw: UIStackView!
     @IBOutlet weak var durationMinsTextFld: UITextField!
+    @IBOutlet weak var durationChanger: UIStepper!
     @IBOutlet weak var durEditingToolbar: UIToolbar!
+    @IBOutlet weak var valCategCtrl: UISegmentedControl!
     
-    let DEV_HEIGHT_iPh4S: CGFloat = 480.0
+    let HEIGHT_iPh4S: CGFloat = 480.0
     let LHS_INSET_RGLR_HORIZ_SZ_CLS: CGFloat = 80.0
-
+    
+    // var currValCateg = TDTActivity.valueCategory
+    
+    var currActivText = ""
+    var lookupTermsPhrases = [String]()
+    
+    
     func checkScreenHeight() {
+        // FIXME:  INVALID tests; "height" still seem after rotation
         let scrn = UIScreen.mainScreen()
         if scrn.traitCollection.verticalSizeClass == .Regular &&
-                scrn.bounds.height > DEV_HEIGHT_iPh4S {
+                scrn.bounds.height > HEIGHT_iPh4S {
             activityTextFld.autocorrectionType = .Yes
         } else {
             activityTextFld.autocorrectionType = .No
@@ -46,7 +54,7 @@ class TDTEditActivityViewCtlr: UIViewController
     
     func addMenuItemToTextField() {
         // FIXME:  add stuff for copying selection to known words/phrases list
-        print("\(self.dynamicType).\(#function) called")
+        // print("\(self.dynamicType).\(#function) called")
         guard let items = UIMenuController.sharedMenuController().menuItems else {
             return
         }
@@ -60,12 +68,26 @@ class TDTEditActivityViewCtlr: UIViewController
         checkScreenHeight()
         addMenuItemToTextField()
         activityTextFld.becomeFirstResponder()
+        
         durationMinsTextFld.inputAccessoryView = durEditingToolbar
+        // FIXME:  also handle CANCEL button
+        let doneButton = durEditingToolbar.items![2]
+        doneButton.target = self
+        doneButton.action = #selector(durationChanged)
+        
+        // FIXME:  set value of duration text field based on current underlying value
+        // FIXME:  and/or settings bundle
+        durationChanger.addTarget(self,
+                                  action: #selector(updateDurationViaStepper),                                  forControlEvents: .AllEvents)
     }
     
     override func viewWillTransitionToSize(size: CGSize,
                         withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         checkScreenHeight()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        print("EditActivVCtlr: nd to write new activs & lookup terms to disk before we go")
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,15 +112,45 @@ class TDTEditActivityViewCtlr: UIViewController
     
     @IBAction func textEntryDone(sender: UITextField) {
         let tf = sender
-        print("input:  \(tf.text!)")
+        let enteredText = tf.text!
+        print("input:  \(enteredText)")
         // 'commit' the activity when text field's dismissed (use defaults
         //    or curr. settings for all other fields, unless in 'new user' mode)
         // FIXME: in 'new user' mode, PROMPT to set/verify categ/duration, etc.
         // FIXME: even w/o sel, both "lets" succeed?  need better logic here
         guard let r = tf.selectedTextRange else {return }
         guard let substr = tf.textInRange(r) else {return }
-        print("    selected:  [\(substr)]")
+        // add this selected text to our "look-up terms" dictionary
+        // ...
+        if substr.characters.count > 0 {
+            print("    selected:  [\(substr)]")
+            // FIXME:  add check for dupe/relative of existing entry
+            lookupTermsPhrases.append(substr)
+        }
+        if enteredText != currActivText {  // FIXME: also trim whitespace first
+            print("entered: [\(enteredText)], curr: [\(currActivText)]")
+            // save new entry
+            print("TO_DO:  save new activity into file/DB/structure(s)")
+            currActivText = enteredText
+        }
+        dismissViewControllerAnimated(true, completion: {} )
         
+    }
+    
+    @IBAction func valCategChanged(sender: UISegmentedControl) {
+        print("val categ changed to: \(valCategCtrl.titleForSegmentAtIndex(valCategCtrl.selectedSegmentIndex))")
+    }
+    
+    @IBAction func durationChanged(sender: AnyObject) {
+        // FIXME:  fires TWICE if DONE button used, since we're also
+        // FIXME:     trapping "editingDidEnd" event (to finish by simply leaving text field)
+        print("duration chgd to \(durationMinsTextFld.text!)")
+        durationMinsTextFld.resignFirstResponder()
+    }
+    
+    @IBAction func updateDurationViaStepper(sender: UIStepper) {
+        print("dur'n. inc/decr'd to:  \(durationChanger.value)")
+        durationMinsTextFld.text = String(durationChanger.value)
     }
     
 }
