@@ -22,6 +22,10 @@ class TDTEditActivityViewCtlr: UIViewController
     let HEIGHT_iPh4S: CGFloat = 480.0
     let LHS_INSET_RGLR_HORIZ_SZ_CLS: CGFloat = 80.0
     
+    let DEFAULT_DURATION = 15.0   // minutes
+    let MAX_DURATION = 600.0      // minutes (ten hours)
+
+    
     // var currValCateg = TDTActivity.valueCategory
     
     var currActivText = ""
@@ -29,7 +33,7 @@ class TDTEditActivityViewCtlr: UIViewController
     
     
     func checkScreenHeight() {
-        // FIXME:  INVALID tests; "height" still seem after rotation
+        // FIXME:  INVALID tests; "height" still same after rotation
         let scrn = UIScreen.mainScreen()
         if scrn.traitCollection.verticalSizeClass == .Regular &&
                 scrn.bounds.height > HEIGHT_iPh4S {
@@ -78,6 +82,8 @@ class TDTEditActivityViewCtlr: UIViewController
         
         // FIXME:  set value of duration text field based on current underlying value
         // FIXME:  and/or settings bundle
+        durationChanger.value = DEFAULT_DURATION
+        durationChanger.maximumValue = MAX_DURATION
         durationChanger.addTarget(self,
                                   action: #selector(updateDurationViaStepper),                                  forControlEvents: .AllEvents)
     }
@@ -138,8 +144,16 @@ class TDTEditActivityViewCtlr: UIViewController
         
     }
     
+    @IBAction func grabFocusFromActivTextFld(sender: AnyObject) {
+        // FIXME:  factor out textEntryDone()'s text-retrieval parts into
+        // FIXME:     a function that we can also use here
+        activityTextFld.resignFirstResponder()
+        print("text fld conts: \(activityTextFld.text!)")
+    }
+    
     @IBAction func valCategChanged(sender: UISegmentedControl) {
-        print("val categ changed to: \(valCategCtrl.titleForSegmentAtIndex(valCategCtrl.selectedSegmentIndex))")
+        print("valCateg chgd to: \(valCategCtrl.titleForSegmentAtIndex(valCategCtrl.selectedSegmentIndex)!)")
+        grabFocusFromActivTextFld(self)
     }
     
     @IBAction func durationChanged(sender: AnyObject) {
@@ -147,11 +161,13 @@ class TDTEditActivityViewCtlr: UIViewController
         // FIXME:     trapping "editingDidEnd" event (to finish by simply leaving text field)
         print("duration chgd to \(durationMinsTextFld.text!)")
         durationMinsTextFld.resignFirstResponder()
+        grabFocusFromActivTextFld(self)
     }
     
     @IBAction func updateDurationViaStepper(sender: UIStepper) {
-        print("dur'n. inc/decr'd to:  \(durationChanger.value)")
-        durationMinsTextFld.text = String(durationChanger.value)
+        // print("dur'n. inc/decr'd to:  \(durationChanger.value)")
+        durationMinsTextFld.text = String(Int(durationChanger.value))
+        grabFocusFromActivTextFld(self)
     }
     
 
@@ -162,6 +178,11 @@ class TDTEditActivityViewCtlr: UIViewController
                 pop.delegate = self
                 // FIXME:  consider adding delay macro, and passthroughViews
                 print("segue-ing to change start time...")
+                
+                // from Neuburg PROG'G iOS9
+                let vc = TDTChgStartTimeVCtlr()
+                vc.modalPresentationStyle = .Popover
+                self.presentViewController( vc, animated: true, completion: nil)
             }
         }
     }
@@ -175,13 +196,7 @@ class TDTEditActivityViewCtlr: UIViewController
     
     func updateStartTime() {
         print("updateStartTime() called... need to change start time...")
-        
-        /*  FIXME: TODO: popover would be more-lightweight way to present this?
-        if let pop = self.popoverPresentationController {
-            // ... other configurations go here ... 
-            pop.delegate = self as! UIPopoverPresentationController
-        }
-        */
+        grabFocusFromActivTextFld(self)
     }
     
     

@@ -15,6 +15,7 @@
 		144717881D0F1F20005B63EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 144717861D0F1F20005B63EF /* LaunchScreen.storyboard */; };
 		144717931D0F1F20005B63EF /* TDTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144717921D0F1F20005B63EF /* TDTTests.swift */; };
 		144717A21D0F555F005B63EF /* TDTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144717A11D0F555F005B63EF /* TDTActivity.swift */; };
+		14B6B40D1D53B93400EE5648 /* TDTChgStartTimeVCtlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6B40B1D53B93400EE5648 /* TDTChgStartTimeVCtlr.swift */; };
 		14F1CCC71D1ABACE0026B062 /* TDTParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1CCC61D1ABACE0026B062 /* TDTParams.swift */; };
 		14F1CCC91D1B019D0026B062 /* TDTEditActivityViewCtlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1CCC81D1B019D0026B062 /* TDTEditActivityViewCtlr.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		144717921D0F1F20005B63EF /* TDTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TDTTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		144717941D0F1F20005B63EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		144717A11D0F555F005B63EF /* TDTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTActivity.swift; path = _model/TDTActivity.swift; sourceTree = "<group>"; };
+		14B6B40B1D53B93400EE5648 /* TDTChgStartTimeVCtlr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTChgStartTimeVCtlr.swift; path = _controller/TDTChgStartTimeVCtlr.swift; sourceTree = "<group>"; };
 		14F1CCC61D1ABACE0026B062 /* TDTParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDTParams.swift; sourceTree = "<group>"; };
 		14F1CCC81D1B019D0026B062 /* TDTEditActivityViewCtlr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTEditActivityViewCtlr.swift; path = _controller/TDTEditActivityViewCtlr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 				1447177D1D0F1F20005B63EF /* TDTAppDelegate.swift */,
 				1447177F1D0F1F20005B63EF /* TDTMainViewCtlr.swift */,
 				14F1CCC81D1B019D0026B062 /* TDTEditActivityViewCtlr.swift */,
+				14B6B40B1D53B93400EE5648 /* TDTChgStartTimeVCtlr.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B6B40D1D53B93400EE5648 /* TDTChgStartTimeVCtlr.swift in Sources */,
 				144717A21D0F555F005B63EF /* TDTActivity.swift in Sources */,
 				144717801D0F1F20005B63EF /* TDTMainViewCtlr.swift in Sources */,
 				14F1CCC71D1ABACE0026B062 /* TDTParams.swift in Sources */,

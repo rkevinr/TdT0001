@@ -80,15 +80,6 @@
                                     <action selector="valCategChanged:" destination="4TF-gu-6eN" eventType="valueChanged" id="OLd-OA-lW2"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u91-5S-CGX">
-                                <rect key="frame" x="229" y="216" width="142" height="30"/>
-                                <state key="normal" title="Change Start Time..."/>
-                                <connections>
-                                    <segue destination="4VD-fm-snW" kind="popoverPresentation" identifier="ChangeStartTimeSegue" popoverAnchorView="u91-5S-CGX" id="t9q-GC-vQ4">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add/Edit Activity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K56-zc-pZD">
                                 <rect key="frame" x="246" y="40" width="108" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -118,8 +109,18 @@
                                     </stepper>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u91-5S-CGX">
+                                <rect key="frame" x="229" y="216" width="142" height="30"/>
+                                <state key="normal" title="Change Start Time..."/>
+                                <connections>
+                                    <segue destination="Y1k-Ou-q2q" kind="popoverPresentation" popoverAnchorView="u91-5S-CGX" id="Ex4-IJ-k5I">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="vgV-4R-NYb" firstAttribute="top" secondItem="K56-zc-pZD" secondAttribute="bottom" constant="20" id="2Za-p4-fCg"/>
                             <constraint firstItem="K56-zc-pZD" firstAttribute="top" secondItem="SFG-gs-Tef" secondAttribute="bottom" constant="20" id="5Ox-Ma-rb3"/>
@@ -136,6 +137,9 @@
                             <constraint firstItem="vgV-4R-NYb" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="ubh-58-nbj"/>
                             <constraint firstItem="N6Y-3M-k1o" firstAttribute="centerX" secondItem="2JW-Ze-ISV" secondAttribute="centerX" id="zD0-1I-KkG"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="X9C-3C-xdz" appends="YES" id="GH2-fW-ifc"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="activityTextFld" destination="vgV-4R-NYb" id="gwa-8W-Ynk"/>
@@ -155,40 +159,73 @@
                         <barButtonItem systemItem="done" id="uD3-La-Izo"/>
                     </items>
                 </toolbar>
+                <tapGestureRecognizer id="X9C-3C-xdz">
+                    <connections>
+                        <action selector="grabFocusFromActivTextFld:" destination="4TF-gu-6eN" id="ZFX-qH-4HC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1106" y="200"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="71W-Ve-oNh">
+        <!--Chg Start TimeV Ctlr-->
+        <scene sceneID="V1G-Jp-myp">
             <objects>
-                <viewController id="4VD-fm-snW" sceneMemberID="viewController">
+                <viewController id="dP9-5d-EHx" customClass="TDTChgStartTimeVCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="b6G-3Y-vCf"/>
-                        <viewControllerLayoutGuide type="bottom" id="2Q4-p2-hVj"/>
+                        <viewControllerLayoutGuide type="top" id="C3L-gJ-Npd"/>
+                        <viewControllerLayoutGuide type="bottom" id="g3k-Pu-jDi"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NqN-uI-jln">
+                    <view key="view" contentMode="scaleToFill" id="rhG-RL-jQv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fkx-ds-MUZ">
-                                <rect key="frame" x="0.0" y="7" width="600" height="593"/>
-                                <date key="date" timeIntervalSinceReferenceDate="491948207.94423401">
-                                    <!--2016-08-03 20:16:47 +0000-->
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JOp-Bf-v8z">
+                                <rect key="frame" x="175" y="64" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="FRU-mz-MuQ"/>
+                                    <constraint firstAttribute="width" constant="250" id="JYi-df-d8p"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="492102261.43388599">
+                                    <!--2016-08-05 15:04:21 +0000-->
                                 </date>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2Q4-p2-hVj" firstAttribute="top" secondItem="Fkx-ds-MUZ" secondAttribute="bottom" id="2sy-xT-8cH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Fkx-ds-MUZ" secondAttribute="trailing" constant="-20" id="EFG-x7-3tZ"/>
-                            <constraint firstItem="Fkx-ds-MUZ" firstAttribute="leading" secondItem="NqN-uI-jln" secondAttribute="leadingMargin" constant="-20" id="KrQ-qN-i6e"/>
-                            <constraint firstItem="Fkx-ds-MUZ" firstAttribute="top" secondItem="NqN-uI-jln" secondAttribute="topMargin" constant="20" id="n8w-q8-vEu"/>
+                            <constraint firstItem="JOp-Bf-v8z" firstAttribute="centerX" secondItem="rhG-RL-jQv" secondAttribute="centerX" id="PF6-mA-TbP"/>
+                            <constraint firstItem="JOp-Bf-v8z" firstAttribute="top" secondItem="C3L-gJ-Npd" secondAttribute="bottom" id="kLD-Yi-Ids"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="RbK-3i-eDl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="QJT-9d-ygx">
+                            <connections>
+                                <action selector="dismissPopover:" destination="dP9-5d-EHx" id="LXA-X8-G76"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="250" height="250"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H8b-5R-0TS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p8f-9l-3Kt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="200"/>
+            <point key="canvasLocation" x="2498" y="200"/>
+        </scene>
+        <!--NavForChgStartTime-->
+        <scene sceneID="4z3-9r-BOd">
+            <objects>
+                <navigationController title="NavForChgStartTime" automaticallyAdjustsScrollViewInsets="NO" id="Y1k-Ou-q2q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9BL-O6-bUU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dP9-5d-EHx" kind="relationship" relationship="rootViewController" id="FrQ-oO-meN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mIe-YH-9nO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1790" y="200"/>
         </scene>
     </scenes>
 </document>
