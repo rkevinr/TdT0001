@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="33G-A2-UYp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Ctlr-->
+        <!--Activities-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TDTMainViewCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Activities" id="BYZ-38-t0r" customClass="TDTMainViewCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-cO-2vj">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-cO-2vj">
                                 <rect key="frame" x="70" y="520" width="82" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Edit Activity"/>
@@ -25,7 +25,7 @@
                                     <segue destination="4TF-gu-6eN" kind="presentation" id="UZk-n2-wBQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkO-bz-482">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkO-bz-482">
                                 <rect key="frame" x="473" y="520" width="57" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Settings">
@@ -44,9 +44,11 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gdE-cO-2vj" secondAttribute="bottom" constant="50" id="yRM-tg-Vjb"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Activities" id="O7H-9M-cFw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1074" y="190"/>
         </scene>
         <!--Edit Activity View Ctlr-->
         <scene sceneID="8eV-DN-J5q">
@@ -165,7 +167,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1106" y="200"/>
+            <point key="canvasLocation" x="1918" y="200"/>
         </scene>
         <!--Chg Start TimeV Ctlr-->
         <scene sceneID="V1G-Jp-myp">
@@ -207,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8f-9l-3Kt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2498" y="200"/>
+            <point key="canvasLocation" x="3310" y="200"/>
         </scene>
         <!--NavForChgStartTime-->
         <scene sceneID="4z3-9r-BOd">
@@ -225,7 +227,24 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mIe-YH-9nO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1790" y="200"/>
+            <point key="canvasLocation" x="2602" y="200"/>
+        </scene>
+        <!--HomeScreen-->
+        <scene sceneID="QlF-jO-4cd">
+            <objects>
+                <tabBarController title="HomeScreen" automaticallyAdjustsScrollViewInsets="NO" id="33G-A2-UYp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Fmb-M6-WIP">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Nz9-yN-7gM"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PD3-2A-q0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="270" y="190"/>
         </scene>
     </scenes>
 </document>

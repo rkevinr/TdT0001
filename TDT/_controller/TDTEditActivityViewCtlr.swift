@@ -57,21 +57,32 @@ class TDTEditActivityViewCtlr: UIViewController
         }
     }
     
+    @IBAction func doNothing(sender: AnyObject?) {
+        print("\(self.dynamicType).\(#function) called")
+    }
+    
     func addMenuItemToTextField() {
         // FIXME:  add stuff for copying selection to known words/phrases list
-        // print("\(self.dynamicType).\(#function) called")
+        print("\(self.dynamicType).\(#function) called")
+        // FIXME:  this currently returns nil, so probably not active till text field is active?
+        /*
         guard let items = UIMenuController.sharedMenuController().menuItems else {
             return
         }
-        items.forEach {
+        */
+        UIMenuController.sharedMenuController().menuItems = [UIMenuItem]()
+        UIMenuController.sharedMenuController().menuItems?.append(
+                    UIMenuItem(title: "AddToKB", action: #selector(doNothing)))
+        UIMenuController.sharedMenuController().menuItems?.forEach {
             print("    item: \($0)")
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // print("\(self.dynamicType).\(#function) called")
         checkScreenHeight()
-        addMenuItemToTextField()
+        addMenuItemToTextField()  // FIXME: will this work AFTER text fld becomes 1st responder?
         activityTextFld.becomeFirstResponder()
         
         durationMinsTextFld.inputAccessoryView = durEditingToolbar
@@ -85,7 +96,15 @@ class TDTEditActivityViewCtlr: UIViewController
         durationChanger.value = DEFAULT_DURATION
         durationChanger.maximumValue = MAX_DURATION
         durationChanger.addTarget(self,
-                                  action: #selector(updateDurationViaStepper),                                  forControlEvents: .AllEvents)
+                                  action: #selector(updateDurationViaStepper),
+                                  forControlEvents: .AllEvents)
+        
+        // FIXME: TODO: check whether today's log file exists; if so, read it
+        // FIXME:   in on a separate queue; if not, create it
+        /*
+        NSString *f = [[NSBundle mainBundle]
+            pathForResource: @"winedb_v68_wdb" ofType: @"txt"];
+        */
     }
     
     override func viewWillTransitionToSize(size: CGSize,
@@ -192,7 +211,6 @@ class TDTEditActivityViewCtlr: UIViewController
         print("...popover dismissed")
         updateStartTime()
     }
-    
     
     func updateStartTime() {
         print("updateStartTime() called... need to change start time...")
