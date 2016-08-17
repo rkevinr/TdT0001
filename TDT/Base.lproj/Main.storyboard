@@ -44,16 +44,35 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gdE-cO-2vj" secondAttribute="bottom" constant="50" id="yRM-tg-Vjb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Activities" id="O7H-9M-cFw"/>
+                    <tabBarItem key="tabBarItem" title="Activities" image="Activities" id="O7H-9M-cFw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1074" y="190"/>
         </scene>
-        <!--Edit Activity View Ctlr-->
+        <!--Expenses-->
+        <scene sceneID="x6Y-nB-t7r">
+            <objects>
+                <viewController id="eVI-Xc-W4f" customClass="TDTExpensesViewCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ub-b7-xlc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZIS-AS-Abb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="00r-Xl-TZN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Expenses" image="Expenses" id="tZm-hA-26C"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4qD-3D-rPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="967"/>
+        </scene>
+        <!--Activity View Ctlr-->
         <scene sceneID="8eV-DN-J5q">
             <objects>
-                <viewController id="4TF-gu-6eN" customClass="TDTEditActivityViewCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4TF-gu-6eN" customClass="TDTActivityViewCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SFG-gs-Tef"/>
                         <viewControllerLayoutGuide type="bottom" id="slK-nH-n8g"/>
@@ -240,6 +259,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Nz9-yN-7gM"/>
+                        <segue destination="eVI-Xc-W4f" kind="relationship" relationship="viewControllers" id="MXA-rL-UVc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PD3-2A-q0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,4 +267,8 @@
             <point key="canvasLocation" x="270" y="190"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Activities" width="24" height="24"/>
+        <image name="Expenses" width="52" height="46"/>
+    </resources>
 </document>

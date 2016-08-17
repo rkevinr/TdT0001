@@ -1,5 +1,5 @@
 //
-//  TDTEditActivityViewCtlr.swift
+//  TDTActivityViewCtlr.swift
 //  TDT
 //
 //  Created by Kevin on 6/22/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TDTEditActivityViewCtlr: UIViewController
+class TDTActivityViewCtlr: UIViewController
                     /* , UITextFieldDelegate */
                     , UIPopoverPresentationControllerDelegate {
     
@@ -113,7 +113,7 @@ class TDTEditActivityViewCtlr: UIViewController
     }
     
     override func viewWillDisappear(animated: Bool) {
-        print("EditActivVCtlr: nd to write new activs & lookup terms to disk before we go")
+        print("\(self.dynamicType): nd to write new activs & lookup terms to disk before we go")
     }
 
     override func didReceiveMemoryWarning() {
