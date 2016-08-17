@@ -1,5 +1,5 @@
 //
-//  TDTChgStartTimeVCtlr.swift
+//  TDTActivChgStartTimeVCtlr.swift
 //  TDT
 //
 //  Created by Kevin on 8/4/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TDTChgStartTimeVCtlr: UIViewController {
+class TDTActivChgStartTimeVCtlr: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

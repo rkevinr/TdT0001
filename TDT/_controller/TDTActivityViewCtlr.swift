@@ -199,7 +199,7 @@ class TDTActivityViewCtlr: UIViewController
                 print("segue-ing to change start time...")
                 
                 // from Neuburg PROG'G iOS9
-                let vc = TDTChgStartTimeVCtlr()
+                let vc = TDTActivChgStartTimeVCtlr()
                 vc.modalPresentationStyle = .Popover
                 self.presentViewController( vc, animated: true, completion: nil)
             }
