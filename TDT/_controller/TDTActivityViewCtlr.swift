@@ -64,12 +64,7 @@ class TDTActivityViewCtlr: UIViewController
     func addMenuItemToTextField() {
         // FIXME:  add stuff for copying selection to known words/phrases list
         print("\(self.dynamicType).\(#function) called")
-        // FIXME:  this currently returns nil, so probably not active till text field is active?
-        /*
-        guard let items = UIMenuController.sharedMenuController().menuItems else {
-            return
-        }
-        */
+        // FIXME:  menuItems holds only custom items; standard ones not accessible by app (?)
         UIMenuController.sharedMenuController().menuItems = [UIMenuItem]()
         UIMenuController.sharedMenuController().menuItems?.append(
                     UIMenuItem(title: "AddToKB", action: #selector(doNothing)))
@@ -113,7 +108,7 @@ class TDTActivityViewCtlr: UIViewController
     }
     
     override func viewWillDisappear(animated: Bool) {
-        print("\(self.dynamicType): nd to write new activs & lookup terms to disk before we go")
+        print("\(self.dynamicType): nd to close output file in app delegate")
     }
 
     override func didReceiveMemoryWarning() {
@@ -157,6 +152,7 @@ class TDTActivityViewCtlr: UIViewController
             print("entered: [\(enteredText)], curr: [\(currActivText)]")
             // save new entry
             print("TO_DO:  save new activity into file/DB/structure(s)")
+            // saveActivityToFile()
             currActivText = enteredText
         }
         dismissViewControllerAnimated(true, completion: {} )
