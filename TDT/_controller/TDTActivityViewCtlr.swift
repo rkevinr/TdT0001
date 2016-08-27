@@ -142,7 +142,9 @@ class TDTActivityViewCtlr: UIViewController
         // write each field of rec individually, for first, crude approximation
         let df = NSDateFormatter()
         df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)"
-        var d = (df.stringFromDate(currStartTime)+"|").dataUsingEncoding(NSUTF8StringEncoding)
+        var d: NSData?
+        
+        d = (String(currDuration)+"|").dataUsingEncoding(NSUTF8StringEncoding)
         fh.seekToEndOfFile()
         fh.writeData(d!)
         d = (currValCateg+"|").dataUsingEncoding(NSUTF8StringEncoding)
@@ -151,7 +153,10 @@ class TDTActivityViewCtlr: UIViewController
         d = (currActivityText+"|").dataUsingEncoding(NSUTF8StringEncoding)
         fh.seekToEndOfFile()
         fh.writeData(d!)
-        d = "\n\n".dataUsingEncoding(NSUTF8StringEncoding)
+        d = (df.stringFromDate(currStartTime)+"|").dataUsingEncoding(NSUTF8StringEncoding)
+        fh.seekToEndOfFile()
+        fh.writeData(d!)
+        d = "\n".dataUsingEncoding(NSUTF8StringEncoding)
         fh.seekToEndOfFile()
         fh.writeData(d!)
     }
