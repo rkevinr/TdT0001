@@ -10,6 +10,8 @@ import Foundation
 
 struct TDTAppStateVars {
     var logFileName: String
-    var logFileHandle: NSFileHandle
-    
+    var logFileHandle: NSFileHandle // FIXME: elim redundant vars here
+    var logFilePath: String
+    var logFileURL: NSURL
+    var logFileIsOpen: Bool
 }

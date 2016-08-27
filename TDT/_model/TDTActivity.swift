@@ -8,23 +8,18 @@
 
 import Foundation
 
-enum ValueCategory: String {
-    case B = "B"
-    case Ne = "Ne"
-    case NB = "NB"
-    case SL = "SL"
-}
+var valueCategories: [String] = ["B", "Ne", "NB", "SL"]
 
-let defaultValueCategory = ValueCategory.Ne
+let defaultValueCategory = valueCategories[1] // Ne
 
 struct TDTActivity {
     let description: String
-    let valueCategory:  ValueCategory
+    let valueCategory:  String
     let durationMinutes: Int
     let startTime: NSDate // NSDate representation as String?
  
-    init(_ description: String = "[empty]",
-            valueCategory: ValueCategory = defaultValueCategory,
+    init(description: String = "[empty]",
+            valueCategory: String = defaultValueCategory,
             durationMins: Int = 15,
             startTime: NSDate = NSDate(timeIntervalSinceNow: 0) ) {
         

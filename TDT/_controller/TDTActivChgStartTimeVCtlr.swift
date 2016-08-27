@@ -9,6 +9,7 @@
 import UIKit
 
 class TDTActivChgStartTimeVCtlr: UIViewController {
+    @IBOutlet weak var dateTimePicker: UIDatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ class TDTActivChgStartTimeVCtlr: UIViewController {
     }
     
     @IBAction func dismissPopover(sender: UIButton) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        let parent = self.presentingViewController!
+        // TODO: why can't dynamicType (vs. specific class name) be used for typecast?
+        (parent as! TDTActivityViewCtlr).updateStartTime(dateTimePicker.date)
+        parent.dismissViewControllerAnimated(true, completion: nil)
     }
 }

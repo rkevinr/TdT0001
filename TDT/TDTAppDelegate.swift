@@ -14,89 +14,92 @@ class TDTAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var globals: TDTAppStateVars?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        print("\(self.dynamicType).\(#function) called; create/open output FILE")
-        
-        let pid = NSProcessInfo.processInfo().processIdentifier
-        print("process ID:  \(pid)")
-        let fn = "logTDT_AddDateStampASAP." + String(pid) + ".txt"  // FIXME (datestamp)
+    // MARK:  app setup/mgmt helper functions
+    func openLogFile() {
+        // FIXME:  must be ONLY a datestamp, because app may fully exit then restart on same day;
+        // FIXME:     (datestamp will match, but PID may NOT)
+        let df = NSDateFormatter()
+        df.dateFormat = "yyyy_MMdd"
+        let date = NSDate(timeIntervalSinceNow: NSTimeInterval(0))
+        let dateStringForToday = df.stringFromDate(date)
 
+        let pid = NSProcessInfo.processInfo().processIdentifier
+        let fn = "logTDT_" + dateStringForToday + "." + String(pid) + ".txt" // FIXME (datestamp ONLY)
+        
         guard let dirURL = NSFileManager.defaultManager()
                             .URLsForDirectory(
                                 .DocumentDirectory,
                                 inDomains: .AllDomainsMask
                             ).first                                 else {
-            print("failed to get directory URL for output file")
-            return false
+                print("failed to get directory URL for output file")
+                // FIXME:  consider throwing error????
+                return
         }
         
-        // let fp = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(fn)
         let fp = dirURL.URLByAppendingPathComponent(fn)
-        print("fp = \(fp)")
-        
-        let fm = NSFileManager.defaultManager() // FIXME: remove redundancy above
         let path = fp.path //  fp.absoluteString
+        let fm = NSFileManager.defaultManager() // FIXME: remove redundancy above
         if fm.fileExistsAtPath(path!) {
             print("file exists, so ONLY open it")
         } else {
-            print("file DOESN'T exist, so CREATE it now...")
-            print("path = \(path)")
             let fileCreated = fm.createFileAtPath(path!, contents: nil,
-                                attributes: [
-                                    // NSFileAppendOnly : true,
-                                    NSFileType: NSFileTypeRegular
-                                    ] )
-            print("file creation result:  \(fileCreated)")
+                                  attributes: [ NSFileType: NSFileTypeRegular ]
+                                )
+            var crdate: AnyObject?
+            do {
+                try crdate = fm.attributesOfItemAtPath(path!)[NSFileCreationDate]
+            } catch {
+                print("failed to get logfile-creation date")
+            }
+            print("file: \(fn) created at \(crdate!)")
         }
         
         var fh: NSFileHandle
-        do {
-            // FIXME: need better error checking in this section
-            fh =  try NSFileHandle(forUpdatingAtPath: path!)!
-            //writing
-                let sampleText = "some more text: \(pid)"
-                print("sample text = \(sampleText)")
-                do {
-                    try sampleText.writeToURL(fp, atomically: false, encoding: NSUTF8StringEncoding)
-                }
-                catch let err as NSError {
-                    /* error handling here */
-                    print("ERROR:  \(err.localizedDescription)")
-                }
-            // globals = TDTAppStateVars(logFileName: fn, logFileHandle: fh)
-        }
-        catch let err as NSError {
-            /* error handling here */
-            print("ERROR:   \(err.debugDescription)")
-            print("failed to get filehandle for output file")
-            return false
-        }
-        print("filehandle = \(fh)")
-        
-        return true
+        // FIXME: need better error checking in this section
+        fh = NSFileHandle(forUpdatingAtPath: path!)!
+        globals = TDTAppStateVars(logFileName: fn, logFileHandle: fh,
+                                  logFilePath: path!, logFileURL: fp,
+                                  logFileIsOpen: true)
+    }
+    
+    // MARK: App Lifecycle Methods
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Override point for customization after application launch.
+       // print("\(self.dynamicType).\(#function) called; create/open output FILE")
+        openLogFile()
+        return true // returning false is ignored, anyway, correct???
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-        print("\(self.dynamicType).\(#function) called; CLOSE FILE")
+        // Sent when the application is about to move from active to inactive state.
+       // print("\(self.dynamicType).\(#function) called; CLOSE FILE [_after_ writing last record]")
+        // FIXME:  closing file in appDidEnterBkgrd may be sufficient (doing here may be redundant)
+        globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
+        globals!.logFileIsOpen = false
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        print("\(self.dynamicType).\(#function) called; CLOSE FILE")
+       // print("\(self.dynamicType).\(#function) called; CLOSE FILE [_after_ writing last record]")
+        globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
+        globals!.logFileIsOpen = false
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        print("\(self.dynamicType).\(#function) called; RE-OPEN FILE")
+       // print("\(self.dynamicType).\(#function) called; RE-OPEN FILE if not already open")
+        if !(globals!.logFileIsOpen) {
+            self.globals!.logFileHandle = NSFileHandle(forUpdatingAtPath: globals!.logFilePath)!
+            globals!.logFileIsOpen = true
+        }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        print("\(self.dynamicType).\(#function) called; RE-OPEN FILE")
+        if !(globals!.logFileIsOpen) {
+            self.globals!.logFileHandle = NSFileHandle(forUpdatingAtPath: globals!.logFilePath)!
+            globals!.logFileIsOpen = true
+        }
     }
     
     func applicationSignificantTimeChange(application: UIApplication) {
@@ -106,7 +109,20 @@ class TDTAppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        print("\(self.dynamicType).\(#function) called")
+       // print("\(self.dynamicType).\(#function) called; should CLOSE FILE [_after_ writing last record] ??")
+        globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
+        globals!.logFileIsOpen = false // FIXME: pointless if app will "die" after this?
     }
 
 }
+
+/*
+ do {
+ }
+ catch let err as NSError {
+     /* error handling here */
+     print("ERROR:   \(err.debugDescription)")
+     print("failed to get filehandle for output file")
+     return false
+ }
+*/

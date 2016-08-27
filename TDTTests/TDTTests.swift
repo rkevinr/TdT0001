@@ -18,7 +18,7 @@ class TDTTests: XCTestCase {
 //                             valueCategory: ValueCategory.Ne,
 //                             startTime: "Tue Jun 14 12:19:37 CDT 2016",
 //                             durationMinutes: 15)
-//        print(a1.valueCategory.rawValue)
+//       // print(a1.valueCategory.rawValue)
     }
     
     override func tearDown() {
