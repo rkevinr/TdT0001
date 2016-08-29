@@ -1,5 +1,5 @@
 //
-//  TDTMainViewCtlr.swift
+//  TDTHomeViewCtlr.swift
 //  TDT
 //
 //  Created by Kevin on 6/13/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TDTMainViewCtlr: UIViewController {
+class TDTHomeViewCtlr: UIViewController {
     
     @IBAction func updateSettings(sender: UIButton) {
         // FIXME:  this is crummy code; here just as a starting point
