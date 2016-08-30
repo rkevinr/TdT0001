@@ -43,7 +43,7 @@
         <!--Activities-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Activities" id="BYZ-38-t0r" customClass="TDTActivitiesViewCtlr" sceneMemberID="viewController">
+                <viewController title="Activities" id="BYZ-38-t0r" customClass="TDTActivitiesViewCtlr" customModule="TDT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -60,14 +60,66 @@
                                     <segue destination="4TF-gu-6eN" kind="presentation" id="UZk-n2-wBQ"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9rH-6R-8h3">
+                                <rect key="frame" x="0.0" y="20" width="600" height="391"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" id="ItJ-WT-FXc" customClass="TDTActivityCell" customModule="TDT" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ItJ-WT-FXc" id="1d3-DV-oLA">
+                                            <rect key="frame" x="0.0" y="0.0" width="533" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Activity Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tc7-sd-h7L">
+                                                    <rect key="frame" x="43" y="28" width="120" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="MFE-3h-afr"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Duration" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-hQ-Ah1">
+                                                    <rect key="frame" x="28" y="28.5" width="0.0" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" id="UEX-hS-ciT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tc7-sd-h7L" firstAttribute="centerY" secondItem="wFG-hQ-Ah1" secondAttribute="centerY" id="lgb-yY-26O"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityDescriptionLabel" destination="tc7-sd-h7L" id="x02-TB-4ZG"/>
+                                            <outlet property="durationLabel" destination="wFG-hQ-Ah1" id="VL8-DC-rRd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ok6-g9-yOo"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="6T4-t4-hCt"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gdE-cO-2vj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="33c-Od-03O"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gdE-cO-2vj" secondAttribute="bottom" constant="50" id="yRM-tg-Vjb"/>
+                            <constraint firstAttribute="trailing" secondItem="9rH-6R-8h3" secondAttribute="trailing" id="G2W-5O-JMa"/>
+                            <constraint firstItem="9rH-6R-8h3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IcD-SD-ZRr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gdE-cO-2vj" secondAttribute="bottom" constant="50" id="RYv-Iw-9OL"/>
+                            <constraint firstItem="9rH-6R-8h3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Td1-Us-fVv"/>
+                            <constraint firstItem="gdE-cO-2vj" firstAttribute="top" secondItem="9rH-6R-8h3" secondAttribute="bottom" constant="60" id="TmE-OO-htf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Activities" image="Activities" id="O7H-9M-cFw"/>
+                    <connections>
+                        <outlet property="activsTblVw" destination="9rH-6R-8h3" id="taR-oc-JwE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

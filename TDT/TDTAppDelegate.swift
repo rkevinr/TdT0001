@@ -12,8 +12,15 @@ import UIKit
 class TDTAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var globals: TDTAppStateVars?
+    static var globals: TDTAppStateVars?
+    static var activitiesList: [TDTActivity] = [TDTActivity]()
+    static var activsTableView: UITableView?
 
+
+    class func setTableView(view: UITableView) {
+        activsTableView = view
+    }
+    
     // MARK:  app setup/mgmt helper functions
     func openLogFile() {
         // FIXME:  must be ONLY a datestamp, because app may fully exit then restart on same day;
@@ -57,9 +64,12 @@ class TDTAppDelegate: UIResponder, UIApplicationDelegate {
         var fh: NSFileHandle
         // FIXME: need better error checking in this section
         fh = NSFileHandle(forUpdatingAtPath: path!)!
-        globals = TDTAppStateVars(logFileName: fn, logFileHandle: fh,
+        TDTAppDelegate.globals = TDTAppStateVars(logFileName: fn, logFileHandle: fh,
                                   logFilePath: path!, logFileURL: fp,
-                                  logFileIsOpen: true)
+                                  logFileIsOpen: true
+                                  // , activitiesList: [TDTActivity](),
+                                  // activsTableView: UITableView()
+                                )
     }
     
     // MARK: App Lifecycle Methods
@@ -74,31 +84,31 @@ class TDTAppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state.
        // print("\(self.dynamicType).\(#function) called; CLOSE FILE [_after_ writing last record]")
         // FIXME:  closing file in appDidEnterBkgrd may be sufficient (doing here may be redundant)
-        globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
-        globals!.logFileIsOpen = false
+       TDTAppDelegate.globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
+       TDTAppDelegate.globals!.logFileIsOpen = false
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
        // print("\(self.dynamicType).\(#function) called; CLOSE FILE [_after_ writing last record]")
-        globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
-        globals!.logFileIsOpen = false
+       TDTAppDelegate.globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
+       TDTAppDelegate.globals!.logFileIsOpen = false
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
        // print("\(self.dynamicType).\(#function) called; RE-OPEN FILE if not already open")
-        if !(globals!.logFileIsOpen) {
-            self.globals!.logFileHandle = NSFileHandle(forUpdatingAtPath: globals!.logFilePath)!
-            globals!.logFileIsOpen = true
+        if !TDTAppDelegate.globals!.logFileIsOpen {
+            TDTAppDelegate.globals!.logFileHandle = NSFileHandle(forUpdatingAtPath:TDTAppDelegate.globals!.logFilePath)!
+           TDTAppDelegate.globals!.logFileIsOpen = true
         }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if !(globals!.logFileIsOpen) {
-            self.globals!.logFileHandle = NSFileHandle(forUpdatingAtPath: globals!.logFilePath)!
-            globals!.logFileIsOpen = true
+        if !TDTAppDelegate.globals!.logFileIsOpen {
+            TDTAppDelegate.globals!.logFileHandle = NSFileHandle(forUpdatingAtPath:TDTAppDelegate.globals!.logFilePath)!
+           TDTAppDelegate.globals!.logFileIsOpen = true
         }
     }
     
@@ -110,8 +120,8 @@ class TDTAppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
        // print("\(self.dynamicType).\(#function) called; should CLOSE FILE [_after_ writing last record] ??")
-        globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
-        globals!.logFileIsOpen = false // FIXME: pointless if app will "die" after this?
+       TDTAppDelegate.globals!.logFileHandle.closeFile()  // FIXME: write any uncommitted record(s) first
+       TDTAppDelegate.globals!.logFileIsOpen = false // FIXME: pointless if app will "die" after this?
     }
 
 }

@@ -131,17 +131,27 @@ class TDTActivityViewCtlr: UIViewController
             durationMins: currDuration,
             startTime: currStartTime
         )
+
+        // let delegate = UIApplication.sharedApplication().delegate
+        //    as! TDTAppDelegate
         
-        // let df = NSDateFormatter()
-        // df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)" // FIXME: pull out as constant
-        let fh = (UIApplication.sharedApplication().delegate
-                    as! TDTAppDelegate).globals!.logFileHandle
+        // "top posting" [reverse chron order]
+        // var g = TDTAppDelegate.globals!
+        // g.activitiesList.append(ar)
+        // g.activsTableView.reloadData()
+        
+        TDTAppDelegate.activitiesList.append(ar)
+        print("activs array count now:  \(TDTAppDelegate.activitiesList.count)")
+        // guard let v = TDTAppDelegate.activsTableView else {
+        TDTAppDelegate.activsTableView!.reloadData()
+        
+        let fh = TDTAppDelegate.globals!.logFileHandle
         // let d = encode(&ar)  // TODO: eventually use this, or obj w/NSCoding
         // fh.writeData(d)
         
         // write each field of rec individually, for first, crude approximation
         let df = NSDateFormatter()
-        df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)"
+        df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)" // FIXME: pull out as constant
         var d: NSData?
         
         d = (String(currDuration)+"|").dataUsingEncoding(NSUTF8StringEncoding)

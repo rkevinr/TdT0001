@@ -6,7 +6,7 @@
 //  Copyright © 2016 R. Kevin Ryan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct TDTAppStateVars {
     var logFileName: String
@@ -14,4 +14,9 @@ struct TDTAppStateVars {
     var logFilePath: String
     var logFileURL: NSURL
     var logFileIsOpen: Bool
+    
+    /*
+    // var activitiesList: [TDTActivity]
+    // var activsTableView: UITableView
+    */
 }

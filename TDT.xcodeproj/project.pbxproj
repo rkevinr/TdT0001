@@ -17,6 +17,7 @@
 		144717A21D0F555F005B63EF /* TDTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144717A11D0F555F005B63EF /* TDTActivity.swift */; };
 		14610F1A1D67566500350174 /* TDTAppStateVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14610F191D67566500350174 /* TDTAppStateVars.swift */; };
 		147893481D74C20500A68C56 /* TDTActivitiesViewCtlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147893471D74C20500A68C56 /* TDTActivitiesViewCtlr.swift */; };
+		1478934A1D74D8E300A68C56 /* TDTActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147893491D74D8E300A68C56 /* TDTActivityCell.swift */; };
 		148369A71D720D7100E655EC /* TDTUtilsEncodeDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148369A61D720D7100E655EC /* TDTUtilsEncodeDecode.swift */; };
 		14B5E84C1D64B8D80037FCB3 /* TDTExpensesViewCtlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E84B1D64B8D80037FCB3 /* TDTExpensesViewCtlr.swift */; };
 		14B6B40D1D53B93400EE5648 /* TDTActivChgStartTimeVCtlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6B40B1D53B93400EE5648 /* TDTActivChgStartTimeVCtlr.swift */; };
@@ -49,6 +50,7 @@
 		144717A11D0F555F005B63EF /* TDTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = TDTActivity.swift; path = _model/TDTActivity.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		14610F191D67566500350174 /* TDTAppStateVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDTAppStateVars.swift; sourceTree = "<group>"; };
 		147893471D74C20500A68C56 /* TDTActivitiesViewCtlr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTActivitiesViewCtlr.swift; path = _controller/TDTActivitiesViewCtlr.swift; sourceTree = "<group>"; };
+		147893491D74D8E300A68C56 /* TDTActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTActivityCell.swift; path = _controller/TDTActivityCell.swift; sourceTree = "<group>"; };
 		148369A61D720D7100E655EC /* TDTUtilsEncodeDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTUtilsEncodeDecode.swift; path = _utilities/TDTUtilsEncodeDecode.swift; sourceTree = "<group>"; };
 		14B5E84B1D64B8D80037FCB3 /* TDTExpensesViewCtlr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTExpensesViewCtlr.swift; path = _controller/TDTExpensesViewCtlr.swift; sourceTree = "<group>"; };
 		14B6B40B1D53B93400EE5648 /* TDTActivChgStartTimeVCtlr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TDTActivChgStartTimeVCtlr.swift; path = _controller/TDTActivChgStartTimeVCtlr.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				1447177D1D0F1F20005B63EF /* TDTAppDelegate.swift */,
 				1447177F1D0F1F20005B63EF /* TDTHomeViewCtlr.swift */,
 				147893471D74C20500A68C56 /* TDTActivitiesViewCtlr.swift */,
+				147893491D74D8E300A68C56 /* TDTActivityCell.swift */,
 				14F1CCC81D1B019D0026B062 /* TDTActivityViewCtlr.swift */,
 				14B6B40B1D53B93400EE5648 /* TDTActivChgStartTimeVCtlr.swift */,
 				14B5E84B1D64B8D80037FCB3 /* TDTExpensesViewCtlr.swift */,
@@ -274,6 +277,7 @@
 				147893481D74C20500A68C56 /* TDTActivitiesViewCtlr.swift in Sources */,
 				14F1CCC71D1ABACE0026B062 /* TDTParams.swift in Sources */,
 				14F1CCC91D1B019D0026B062 /* TDTActivityViewCtlr.swift in Sources */,
+				1478934A1D74D8E300A68C56 /* TDTActivityCell.swift in Sources */,
 				1447177E1D0F1F20005B63EF /* TDTAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
