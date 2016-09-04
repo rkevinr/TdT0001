@@ -14,6 +14,8 @@ let defaultValueCategory = valueCategories[1] // Ne
 
 struct TDTActivity {
     let description: String
+    // FIXME:  valueCategory needs stronger TYPING (a la #selector vs. raw String)
+    // FIXME:  [had been enum, but that didn't meet some requirements]
     let valueCategory:  String
     let durationMinutes: Int
     let startTime: NSDate // NSDate representation as String?

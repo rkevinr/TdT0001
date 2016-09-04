@@ -64,34 +64,37 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="391"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" id="ItJ-WT-FXc" customClass="TDTActivityCell" customModule="TDT" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" id="ItJ-WT-FXc" customClass="TDTActivityCell" customModule="TDT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ItJ-WT-FXc" id="1d3-DV-oLA">
-                                            <rect key="frame" x="0.0" y="0.0" width="533" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Activity Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tc7-sd-h7L">
-                                                    <rect key="frame" x="43" y="28" width="120" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-hQ-Ah1">
+                                                    <rect key="frame" x="28" y="10" width="35" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="MFE-3h-afr"/>
+                                                        <constraint firstAttribute="width" constant="35" id="UEX-hS-ciT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Duration" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-hQ-Ah1">
-                                                    <rect key="frame" x="28" y="28.5" width="0.0" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Description" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tc7-sd-h7L">
+                                                    <rect key="frame" x="83" y="10" width="250" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" id="UEX-hS-ciT"/>
+                                                        <constraint firstAttribute="width" constant="250" id="MFE-3h-afr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="wFG-hQ-Ah1" firstAttribute="leading" secondItem="1d3-DV-oLA" secondAttribute="leadingMargin" constant="20" id="1Bc-Ip-wsh"/>
+                                                <constraint firstItem="tc7-sd-h7L" firstAttribute="leading" secondItem="wFG-hQ-Ah1" secondAttribute="trailing" constant="20" id="7KU-G9-Ln9"/>
                                                 <constraint firstItem="tc7-sd-h7L" firstAttribute="centerY" secondItem="wFG-hQ-Ah1" secondAttribute="centerY" id="lgb-yY-26O"/>
+                                                <constraint firstItem="wFG-hQ-Ah1" firstAttribute="top" secondItem="1d3-DV-oLA" secondAttribute="topMargin" constant="2" id="tI8-WZ-n2q"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

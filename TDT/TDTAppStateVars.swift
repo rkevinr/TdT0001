@@ -13,10 +13,5 @@ struct TDTAppStateVars {
     var logFileHandle: NSFileHandle // FIXME: elim redundant vars here
     var logFilePath: String
     var logFileURL: NSURL
-    var logFileIsOpen: Bool
-    
-    /*
-    // var activitiesList: [TDTActivity]
-    // var activsTableView: UITableView
-    */
+    var logFileIsOpen: Bool    
 }

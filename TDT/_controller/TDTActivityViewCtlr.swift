@@ -113,7 +113,8 @@ class TDTActivityViewCtlr: UIViewController
     }
     
     /*
-    // MARK: - Navigation
+    // MARK: - Navigation -
+    //
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -125,23 +126,16 @@ class TDTActivityViewCtlr: UIViewController
     func saveActivityRecord() {
         // TODO: construct and commit the record/structure, and write to log file
         // create the new TDTActivity record:
-        var ar = TDTActivity(
+        let ar = TDTActivity(
             description:  currActivityText,
             valueCategory: currValCateg,
             durationMins: currDuration,
             startTime: currStartTime
         )
 
-        // let delegate = UIApplication.sharedApplication().delegate
-        //    as! TDTAppDelegate
-        
-        // "top posting" [reverse chron order]
-        // var g = TDTAppDelegate.globals!
-        // g.activitiesList.append(ar)
-        // g.activsTableView.reloadData()
-        
-        TDTAppDelegate.activitiesList.append(ar)
-        print("activs array count now:  \(TDTAppDelegate.activitiesList.count)")
+        //  FIXME: "top-posting" (i.e., in reverse chron order; allow user to configure)
+        TDTAppDelegate.activitiesList.insert(ar, atIndex: 0)
+        // print("activs array count now:  \(TDTAppDelegate.activitiesList.count)")
         // guard let v = TDTAppDelegate.activsTableView else {
         TDTAppDelegate.activsTableView!.reloadData()
         
@@ -192,7 +186,6 @@ class TDTActivityViewCtlr: UIViewController
         }
         if enteredText != currActivityText {  // FIXME: also trim whitespace first
             // save new entry
-            print("TO_DO:  save new activity into file/DB/structure(s)")
             if confirmUseOfDefaultParams { // FIXME: add to user settings
                 // TODO: force validation of other possibly-not-set activity fields
             }
@@ -224,13 +217,12 @@ class TDTActivityViewCtlr: UIViewController
         // FIXME:     trapping "editingDidEnd" event (to finish by simply leaving text field)
         // FIXME:  add error checking for null text field, extra whitespace, etc.
         currDuration = Int(durationMinsTextFld.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
-        print("duration chgd to \(currDuration)")
+        durationChanger.value = Double(currDuration)
         durationMinsTextFld.resignFirstResponder()
     }
     
     @IBAction func updateDurationViaStepper(sender: UIStepper) {
         grabFocusFromActivTextFld(self)
-        print("dur'n. inc/decr'd to:  \(durationChanger.value)")
         currDuration = Int(durationChanger.value)
         durationMinsTextFld.text = String(currDuration)
     }
@@ -259,7 +251,6 @@ class TDTActivityViewCtlr: UIViewController
         grabFocusFromActivTextFld(self)
         let df = NSDateFormatter()
         df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)"
-        print("updateStartTime(NSDate) called...with \(df.stringFromDate(newStartTime))")
         // FIXME: validate new start time before overwriting current value
         currStartTime = newStartTime
     }
