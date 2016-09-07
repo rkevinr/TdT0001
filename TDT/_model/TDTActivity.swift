@@ -12,6 +12,8 @@ var valueCategories: [String] = ["B", "Ne", "NB", "SL"]
 
 let defaultValueCategory = valueCategories[1] // Ne
 
+// TODO:  need idiom for forward/back-facing times (leading/trailing edges)
+// TODO:      for new activities, any time capture stuff (make preference user-settable)
 struct TDTActivity {
     let description: String
     // FIXME:  valueCategory needs stronger TYPING (a la #selector vs. raw String)
