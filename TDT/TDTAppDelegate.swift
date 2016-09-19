@@ -44,7 +44,7 @@ class TDTAppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let fp = dirURL.URLByAppendingPathComponent(fn)
-        let path = fp.path //  fp.absoluteString
+        let path = fp!.path //  fp.absoluteString
         let fm = NSFileManager.defaultManager() // FIXME: remove redundancy above
         if fm.fileExistsAtPath(path!) {
             print("file exists, so ONLY open it")
@@ -65,7 +65,7 @@ class TDTAppDelegate: UIResponder, UIApplicationDelegate {
         // FIXME: need better error checking in this section
         fh = NSFileHandle(forUpdatingAtPath: path!)!
         TDTAppDelegate.globals = TDTAppStateVars(logFileName: fn, logFileHandle: fh,
-                                  logFilePath: path!, logFileURL: fp,
+                                  logFilePath: path!, logFileURL: fp!,
                                   logFileIsOpen: true
                                   // , activitiesList: [TDTActivity](),
                                   // activsTableView: UITableView()
