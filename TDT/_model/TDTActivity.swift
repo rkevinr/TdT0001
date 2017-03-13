@@ -20,12 +20,12 @@ struct TDTActivity {
     // FIXME:  [had been enum, but that didn't meet some requirements]
     let valueCategory:  String
     let durationMinutes: Int
-    let startTime: NSDate // NSDate representation as String?
+    let startTime: Date // NSDate representation as String?
  
     init(description: String = "[empty]",
             valueCategory: String = defaultValueCategory,
             durationMins: Int = 15,
-            startTime: NSDate = NSDate(timeIntervalSinceNow: 0) ) {
+            startTime: Date = Date(timeIntervalSinceNow: 0) ) {
         
         self.description = description
         self.valueCategory = valueCategory

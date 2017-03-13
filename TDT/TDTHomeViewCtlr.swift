@@ -10,7 +10,7 @@ import UIKit
 
 class TDTHomeViewCtlr: UIViewController {
     
-    @IBAction func startDay(sender: UIButton) {
+    @IBAction func startDay(_ sender: UIButton) {
         // * create "today's" log file, using DATE stamp for current day
         // * save "yesterday's" log file
         // * use current TZ as starting TZ for the day (end MAY be different,
@@ -19,25 +19,25 @@ class TDTHomeViewCtlr: UIViewController {
         print("start day:  code needed!")
     }
     
-    @IBAction func endDay(sender: UIButton) {
+    @IBAction func endDay(_ sender: UIButton) {
         // * display how much hB time needed tomorrow to preserve/exceed daily 8d avg mins
         // * save a tentative version of today's log file, subject to revision in AM
         // * record "to-bed" time [and allow adjustment now or later]
         print("end day:  code needed!")    }
     
     
-    @IBAction func updateSettings(sender: UIButton) {
+    @IBAction func updateSettings(_ sender: UIButton) {
         // FIXME:  this is crummy code; here just as a starting point
         // FIXME:  add a setting for 'new' user to be prompted for categ/duration
         let settingsRead =
-            UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)
+            UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
         
         /*
         let appDefaults = [String:AnyObject]()
         NSUserDefaults.standardUserDefaults().registerDefaults(appDefaults)
         */
         
-        let d = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
+        let d = UserDefaults.standard.dictionaryRepresentation()
         for k in d.keys {
             if k.hasSuffix("_preference") {
                 print("(key, value) = (\(k), \(d[k]))")

@@ -10,8 +10,8 @@ import UIKit
 
 struct TDTAppStateVars {
     var logFileName: String
-    var logFileHandle: NSFileHandle // FIXME: elim redundant vars here
+    var logFileHandle: FileHandle // FIXME: elim redundant vars here
     var logFilePath: String
-    var logFileURL: NSURL
+    var logFileURL: URL
     var logFileIsOpen: Bool    
 }

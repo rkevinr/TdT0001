@@ -216,9 +216,13 @@
 				TargetAttributes = {
 					144717791D0F1F20005B63EF = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6UDY76LYJK;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
 					};
 					1447178D1D0F1F20005B63EF = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 144717791D0F1F20005B63EF;
 					};
 				};
@@ -416,11 +420,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Ryan (JM3Y25C5E6)";
+				DEVELOPMENT_TEAM = 6UDY76LYJK;
 				INFOPLIST_FILE = TDT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rkevinr.TDT;
+				PRODUCT_BUNDLE_IDENTIFIER = "KNBKRTEST1.com.knb.krtests1.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "872d6bf3-177b-4adf-ac8e-6a1382f2a581";
+				PROVISIONING_PROFILE_SPECIFIER = KR_iOS9_min;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -428,11 +437,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Ryan (JM3Y25C5E6)";
+				DEVELOPMENT_TEAM = 6UDY76LYJK;
 				INFOPLIST_FILE = TDT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rkevinr.TDT;
+				PRODUCT_BUNDLE_IDENTIFIER = "KNBKRTEST1.com.knb.krtests1.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "872d6bf3-177b-4adf-ac8e-6a1382f2a581";
+				PROVISIONING_PROFILE_SPECIFIER = KR_iOS9_min;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -444,6 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkevinr.TDTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDT.app/TDT";
 			};
 			name = Debug;
@@ -456,6 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rkevinr.TDTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDT.app/TDT";
 			};
 			name = Release;

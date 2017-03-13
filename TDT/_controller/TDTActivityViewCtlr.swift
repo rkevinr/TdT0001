@@ -31,21 +31,21 @@ class TDTActivityViewCtlr: UIViewController
     var currActivityText = ""
     var currValCateg = defaultValueCategory // FIXME: settings may prefer "last used categ"
     var currDuration = TDTActivityViewCtlr.DEFAULT_DURATION  // FIXME: settings may change this
-    var currStartTime = NSDate(timeIntervalSinceNow: NSTimeInterval(0))
+    var currStartTime = Date(timeIntervalSinceNow: TimeInterval(0))
     var lookupTermsPhrases = [String]()
     
     
     func checkScreenHeight() {
         // FIXME:  INVALID tests; "height" still same after rotation
-        let scrn = UIScreen.mainScreen()
-        if scrn.traitCollection.verticalSizeClass == .Regular &&
+        let scrn = UIScreen.main
+        if scrn.traitCollection.verticalSizeClass == .regular &&
                 scrn.bounds.height > HEIGHT_iPh4S {
-            activityTextFld.autocorrectionType = .Yes
+            activityTextFld.autocorrectionType = .yes
         } else {
-            activityTextFld.autocorrectionType = .No
+            activityTextFld.autocorrectionType = .no
         }
         
-        if scrn.traitCollection.horizontalSizeClass == .Regular {
+        if scrn.traitCollection.horizontalSizeClass == .regular {
             activityTextFld.bounds =
                 CGRect(
                     origin: CGPoint(
@@ -60,15 +60,15 @@ class TDTActivityViewCtlr: UIViewController
         }
     }
     
-    @IBAction func doNothing(sender: AnyObject?) {
-        print("\(self.dynamicType).\(#function) called")
+    @IBAction func doNothing(_ sender: AnyObject?) {
+        print("\(type(of: self)).\(#function) called")
     }
     
     func addMenuItemToTextField() {
         // FIXME:  add stuff for copying selection to known words/phrases list
         // FIXME:  menuItems holds only custom items; standard ones not accessible by app (?)
-        UIMenuController.sharedMenuController().menuItems = [UIMenuItem]()
-        UIMenuController.sharedMenuController().menuItems?.append(
+        UIMenuController.shared.menuItems = [UIMenuItem]()
+        UIMenuController.shared.menuItems?.append(
                     UIMenuItem(title: "AddToKB", action: #selector(doNothing)))
     }
     
@@ -90,18 +90,18 @@ class TDTActivityViewCtlr: UIViewController
         durationChanger.maximumValue = Double(TDTActivityViewCtlr.MAX_DURATION)
         durationChanger.addTarget(self,
                                   action: #selector(updateDurationViaStepper),
-                                  forControlEvents: .AllEvents)
+                                  for: .allEvents)
         
         // FIXME: TODO: check whether today's log file exists; if so, read it
         // FIXME:   in on a separate queue; if not, create it
     }
     
-    override func viewWillTransitionToSize(size: CGSize,
-                        withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize,
+                        with coordinator: UIViewControllerTransitionCoordinator) {
         checkScreenHeight()  // FIXME:  "height" does not change with orientation change
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         if self.activityRecordIsDirty {
             print("need to write TDTActivity record, if 'dirty'")
         }
@@ -134,7 +134,7 @@ class TDTActivityViewCtlr: UIViewController
         )
 
         //  FIXME: "top-posting" (i.e., in reverse chron order; allow user to configure)
-        TDTAppDelegate.activitiesList.insert(ar, atIndex: 0)
+        TDTAppDelegate.activitiesList.insert(ar, at: 0)
         // print("activs array count now:  \(TDTAppDelegate.activitiesList.count)")
         // guard let v = TDTAppDelegate.activsTableView else {
         TDTAppDelegate.activsTableView!.reloadData()
@@ -144,32 +144,32 @@ class TDTActivityViewCtlr: UIViewController
         // fh.writeData(d)
         
         // write each field of rec individually, for first, crude approximation
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)" // FIXME: pull out as constant
-        var d: NSData?
+        var d: Data?
         
-        d = (String(currDuration)+"|").dataUsingEncoding(NSUTF8StringEncoding)
+        d = (String(currDuration)+"|").data(using: String.Encoding.utf8)
         fh.seekToEndOfFile()
-        fh.writeData(d!)
-        d = (currValCateg+"|").dataUsingEncoding(NSUTF8StringEncoding)
+        fh.write(d!)
+        d = (currValCateg+"|").data(using: String.Encoding.utf8)
         fh.seekToEndOfFile()
-        fh.writeData(d!)
-        d = (currActivityText+"|").dataUsingEncoding(NSUTF8StringEncoding)
+        fh.write(d!)
+        d = (currActivityText+"|").data(using: String.Encoding.utf8)
         fh.seekToEndOfFile()
-        fh.writeData(d!)
-        d = (df.stringFromDate(currStartTime)+"|").dataUsingEncoding(NSUTF8StringEncoding)
+        fh.write(d!)
+        d = (df.string(from: currStartTime)+"|").data(using: String.Encoding.utf8)
         fh.seekToEndOfFile()
-        fh.writeData(d!)
-        d = "\n".dataUsingEncoding(NSUTF8StringEncoding)
+        fh.write(d!)
+        d = "\n".data(using: String.Encoding.utf8)
         fh.seekToEndOfFile()
-        fh.writeData(d!)
+        fh.write(d!)
     }
     
     func validateFields() -> Bool {
         return true
     }
     
-    @IBAction func textEntryDone(sender: UITextField) {
+    @IBAction func textEntryDone(_ sender: UITextField) {
         let tf = sender
         let enteredText = tf.text!
         // 'commit' the activity when text field's dismissed (use defaults
@@ -177,7 +177,7 @@ class TDTActivityViewCtlr: UIViewController
         // FIXME: in 'new user' mode, PROMPT to set/verify categ/duration, etc.
         // FIXME: even w/o sel, both "lets" succeed?  need better logic here
         guard let r = tf.selectedTextRange else {return }
-        guard let substr = tf.textInRange(r) else {return }
+        guard let substr = tf.text(in: r) else {return }
         // add this selected text to our "look-up terms" dictionary
         // ...
         if substr.characters.count > 0 {
@@ -194,62 +194,62 @@ class TDTActivityViewCtlr: UIViewController
             self.activityRecordIsDirty = false
         }
         
-        dismissViewControllerAnimated(true, completion: {} )
+        dismiss(animated: true, completion: {} )
     }
     
-    @IBAction func grabFocusFromActivTextFld(sender: AnyObject) {
+    @IBAction func grabFocusFromActivTextFld(_ sender: AnyObject) {
         // FIXME:  factor out textEntryDone()'s text-retrieval parts into
         // FIXME:     a function that we can also use here
         activityTextFld.resignFirstResponder()
         // print("text fld conts: \(activityTextFld.text!)")
     }
     
-    @IBAction func valCategChanged(sender: UISegmentedControl) {
+    @IBAction func valCategChanged(_ sender: UISegmentedControl) {
         grabFocusFromActivTextFld(self)
-        currValCateg = valCategCtrl.titleForSegmentAtIndex(
-                                    valCategCtrl.selectedSegmentIndex)!
+        currValCateg = valCategCtrl.titleForSegment(
+                                    at: valCategCtrl.selectedSegmentIndex)!
         print("valCateg chgd to: \(currValCateg)")
     }
     
-    @IBAction func durationChanged(sender: AnyObject) {
+    @IBAction func durationChanged(_ sender: AnyObject) {
         grabFocusFromActivTextFld(self)
         // FIXME:  fires TWICE if DONE button used, since we're also
         // FIXME:     trapping "editingDidEnd" event (to finish by simply leaving text field)
         // FIXME:  add error checking for null text field, extra whitespace, etc.
-        currDuration = Int(durationMinsTextFld.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
+        currDuration = Int(durationMinsTextFld.text!.trimmingCharacters(in: CharacterSet.whitespaces))!
         durationChanger.value = Double(currDuration)
         durationMinsTextFld.resignFirstResponder()
     }
     
-    @IBAction func updateDurationViaStepper(sender: UIStepper) {
+    @IBAction func updateDurationViaStepper(_ sender: UIStepper) {
         grabFocusFromActivTextFld(self)
         currDuration = Int(durationChanger.value)
         durationMinsTextFld.text = String(currDuration)
     }
     
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChangeStartTimeSegue" {
-            let dest = segue.destinationViewController
+            let dest = segue.destination
             if let pop = dest.popoverPresentationController {
                 pop.delegate = self
                 // FIXME:  consider adding delay macro, and passthroughViews
                 // from Neuburg's PROG'G iOS9
                 let vc = TDTActivChgStartTimeVCtlr()
-                vc.modalPresentationStyle = .Popover
-                self.presentViewController( vc, animated: true, completion: nil)
+                vc.modalPresentationStyle = .popover
+                self.present( vc, animated: true, completion: nil)
             }
         }
     }
     
     func popoverPresentationControllerDidDismissPopover(
-        popoverPresentationController: UIPopoverPresentationController) {
+        _ popoverPresentationController: UIPopoverPresentationController) {
         print("[this does NOT get called; FIXME] Back in the U.S.S.R.") // FIXME
     }
     
-    func updateStartTime(newStartTime: NSDate) {
+    func updateStartTime(_ newStartTime: Date) {
         grabFocusFromActivTextFld(self)
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)"
         // FIXME: validate new start time before overwriting current value
         currStartTime = newStartTime

@@ -36,9 +36,9 @@ class TDTActivitiesViewCtlr: UIViewController,
     */
     
     // MARK: - Table View Data Source methods
-    func tableView(tableView: UITableView,
-                     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ActivityCell")
+    func tableView(_ tableView: UITableView,
+                     cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell")
                             as! TDTActivityCell
         
         //let delegate = UIApplication.sharedApplication().delegate
@@ -54,7 +54,7 @@ class TDTActivitiesViewCtlr: UIViewController,
         return cell
     }
     
-    func tableView(tableView: UITableView,
+    func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         //let delegate = UIApplication.sharedApplication().delegate
         //    as! TDTAppDelegate

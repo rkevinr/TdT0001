@@ -33,7 +33,7 @@ class TDTTests: XCTestCase {
         var a1 = TDTActivity(description: "random activity",
                                 valueCategory: defaultValueCategory, // ValueCategory.Ne,
                                 durationMins: 15,
-                                startTime: NSDate(timeIntervalSinceNow: 0)
+                                startTime: Date(timeIntervalSinceNow: 0)
                             )
                             // startTime: NSDate("Tue Jun 14 12:19:37 CDT 2016"),
         print("******\nTDTActivity struct: ******\n    \(a1)\n************")

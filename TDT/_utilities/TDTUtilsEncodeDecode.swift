@@ -10,14 +10,14 @@
 
 import Foundation
 
-func encode<T>(inout value: T) -> NSData {
-    return withUnsafePointer(&value) { p in
-        NSData(bytes: p, length: sizeofValue(value))
+func encode<T>(value: inout T) -> NSData {
+    return withUnsafePointer(to: &value) { p in
+        NSData(bytes: p, length: MemoryLayout.size(ofValue: value))
     }
 }
 
-func decode<T>(data: NSData) -> T {
-    let pointer = UnsafeMutablePointer<T>.alloc(sizeof(T.Type))
-    data.getBytes(pointer, length: sizeof(T))
+func decode<T>(_ data: Data) -> T {
+    let pointer = UnsafeMutablePointer<T>.allocate(capacity: MemoryLayout<T.Type>.size)
+    (data as NSData).getBytes(pointer, length: MemoryLayout<T>.size)
     return pointer.move()
 }
