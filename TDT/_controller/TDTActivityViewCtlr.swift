@@ -139,30 +139,33 @@ class TDTActivityViewCtlr: UIViewController
         // guard let v = TDTAppDelegate.activsTableView else {
         TDTAppDelegate.activsTableView!.reloadData()
         
-        let fh = TDTAppDelegate.globals!.logFileHandle
-        // let d = encode(&ar)  // TODO: eventually use this, or obj w/NSCoding
-        // fh.writeData(d)
-        
-        // write each field of rec individually, for first, crude approximation
-        let df = DateFormatter()
-        df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)" // FIXME: pull out as constant
-        var d: Data?
-        
-        d = (String(currDuration)+"|").data(using: String.Encoding.utf8)
-        fh.seekToEndOfFile()
-        fh.write(d!)
-        d = (currValCateg+"|").data(using: String.Encoding.utf8)
-        fh.seekToEndOfFile()
-        fh.write(d!)
-        d = (currActivityText+"|").data(using: String.Encoding.utf8)
-        fh.seekToEndOfFile()
-        fh.write(d!)
-        d = (df.string(from: currStartTime)+"|").data(using: String.Encoding.utf8)
-        fh.seekToEndOfFile()
-        fh.write(d!)
-        d = "\n".data(using: String.Encoding.utf8)
-        fh.seekToEndOfFile()
-        fh.write(d!)
+        if let fh = TDTAppDelegate.globals!.logFileHandle {
+            // let d = encode(&ar)  // TODO: eventually use this, or obj w/NSCoding
+            // fh.writeData(d)
+            
+            // write each field of rec individually, for first, crude approximation
+            let df = DateFormatter()
+            df.dateFormat = "yyyy_MMdd HH:mm ZZ (zz)" // FIXME: pull out as constant
+            var d: Data?
+            
+            d = (String(currDuration)+"|").data(using: String.Encoding.utf8)
+            fh.seekToEndOfFile()
+            fh.write(d!)
+            d = (currValCateg+"|").data(using: String.Encoding.utf8)
+            fh.seekToEndOfFile()
+            fh.write(d!)
+            d = (currActivityText+"|").data(using: String.Encoding.utf8)
+            fh.seekToEndOfFile()
+            fh.write(d!)
+            d = (df.string(from: currStartTime)+"|").data(using: String.Encoding.utf8)
+            fh.seekToEndOfFile()
+            fh.write(d!)
+            d = "\n".data(using: String.Encoding.utf8)
+            fh.seekToEndOfFile()
+            fh.write(d!)
+        } else {
+            print("couldn't write activity record to file; bad filehandle")
+        }
     }
     
     func validateFields() -> Bool {

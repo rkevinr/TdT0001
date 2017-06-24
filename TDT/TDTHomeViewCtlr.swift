@@ -40,7 +40,7 @@ class TDTHomeViewCtlr: UIViewController {
         let d = UserDefaults.standard.dictionaryRepresentation()
         for k in d.keys {
             if k.hasSuffix("_preference") {
-                print("(key, value) = (\(k), \(d[k]))")
+                print("(key, value) = (\(k), \(String(describing: d[k])))")
             }
         }
     }
